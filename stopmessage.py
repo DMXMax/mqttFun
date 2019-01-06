@@ -10,9 +10,9 @@ def on_message(client, userdata, message):
 
 #broker_address="iot.eclipse.org"
 broker_address="broker.hivemq.com"
-topic = "arachnovato/falcon/player/FPP/playlist/name/set"
+topic = "arachnovato/falcon/player/FPP/state/set"
 
-playlist = ""
+command = "stop"
 
 print("creating new instance")
 client = mqtt.Client("P100177") #create new instance
@@ -23,6 +23,6 @@ client.loop_start() #start the loop
 print("Subscribing to topic",topic)
 client.subscribe(topic)
 print("Publishing message to topic",topic)
-client.publish(topic, playlist)
+client.publish(topic, command)
 time.sleep(8) # wait
 client.loop_stop() #stop the loop
